@@ -51,7 +51,7 @@ export default function Home() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 items-center">
           <motion.h1
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold text-blue-600 cursor-pointer"
