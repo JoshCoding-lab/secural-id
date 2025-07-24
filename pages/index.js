@@ -1,4 +1,12 @@
+import { useState } from 'react';
+
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleNavbar = () => {
+    setIsOpen(!isOpen);
+  };
+
   const articles = [
     {
       title: "Cara Mengenali dan Menghindari Email Phishing Seperti Profesional",
@@ -21,33 +29,59 @@ export default function Home() {
       {/* NAVBAR */}
       <nav className="bg-white shadow sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-blue-600">Secural<span className="text-gray-800">ID</span></h1>
+          <h1 className="text-2xl font-bold text-blue-600">
+            Secural<span className="text-gray-800">ID</span>
+          </h1>
+
+          {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
             <li className="hover:text-blue-600 cursor-pointer">Beranda</li>
             <li className="hover:text-blue-600 cursor-pointer">Artikel</li>
             <li className="hover:text-blue-600 cursor-pointer">Tentang Kami</li>
             <li className="hover:text-blue-600 cursor-pointer">Hubungi Kami</li>
           </ul>
+
+          {/* Hamburger Button */}
+          <button
+            className="md:hidden text-gray-700 focus:outline-none"
+            onClick={toggleNavbar}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
+              viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round"
+                d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden px-4 pb-4">
+            <ul className="space-y-2 text-gray-700 font-medium">
+              <li className="hover:text-blue-600 cursor-pointer">Beranda</li>
+              <li className="hover:text-blue-600 cursor-pointer">Artikel</li>
+              <li className="hover:text-blue-600 cursor-pointer">Tentang Kami</li>
+              <li className="hover:text-blue-600 cursor-pointer">Hubungi Kami</li>
+            </ul>
+          </div>
+        )}
       </nav>
 
       {/* HERO */}
       <section className="bg-gradient-to-r from-blue-500 to-blue-300 min-h-[80vh] flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-10">
-  <div className="text-white text-center md:text-left mt-6 md:mt-0">
-    <h1 className="text-3xl md:text-5xl font-bold mb-4">Keamanan Digital Anda</h1>
-    <p className="text-lg mb-6">
-      Bersama Sebarkan Literasi Seputar Keamanan Digital.
-    </p>
-    <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100 transition">
-      Mulai Sekarang
-    </button>
-  </div>
-
-  <div className="w-full md:w-auto flex justify-center">
-    <img src="/illustration.png" alt="ilustrasi" className="max-w-xs md:max-w-md rounded-xl shadow-lg" />
-  </div>
-</section>
-
+        <div className="text-white text-center md:text-left mt-6 md:mt-0">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4">Keamanan Digital Anda</h1>
+          <p className="text-lg mb-6">
+            Bersama Sebarkan Literasi Seputar Keamanan Digital.
+          </p>
+          <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100 transition">
+            Mulai Sekarang
+          </button>
+        </div>
+        <div className="w-full md:w-auto flex justify-center">
+          <img src="/illustration.png" alt="ilustrasi" className="max-w-xs md:max-w-md rounded-xl shadow-lg" />
+        </div>
+      </section>
 
       {/* ARTIKEL */}
       <section className="py-16 bg-white px-4 md:px-10">
@@ -83,7 +117,6 @@ export default function Home() {
               Mendedukasi dan memberdayakan masyarakat untuk navigasi yang lebih aman di dunia digital.
             </p>
           </div>
-
           <div>
             <h4 className="font-semibold mb-3">Navigasi</h4>
             <ul className="space-y-1 text-gray-300">
@@ -93,7 +126,6 @@ export default function Home() {
               <li>Hubungi Kami</li>
             </ul>
           </div>
-
           <div>
             <h4 className="font-semibold mb-3">Follow Kami</h4>
             <div className="flex space-x-4 text-gray-300 text-xl">
@@ -103,7 +135,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
         <div className="text-center text-sm text-gray-400 mt-10 border-t pt-4">
           © 2025 Secural ID. Sebuah inisiatif dari program magang Kominfo.
         </div>
