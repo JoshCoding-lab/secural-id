@@ -5,19 +5,32 @@ export default function Home() {
       desc: "Pelajari tanda-tanda email penipuan yang canggih dan lindungi data pribadi Anda dari serangan siber.",
       author: "Budi Santoso",
       date: "23 Juli 2025",
-      image: "/phishing.jpg", // simpan di public/
+      image: "/phishing.jpg",
     },
     {
       title: "Cara Mengenali dan Menghindari Email Phishing Seperti Profesional",
       desc: "Pelajari tanda-tanda email penipuan yang canggih dan lindungi data pribadi Anda dari serangan siber.",
       author: "Budi Santoso",
       date: "23 Juli 2025",
-      image: "/phishing.jpg", // simpan di public/
-    },// duplikat data sesuai kebutuhan
+      image: "/phishing.jpg",
+    },
   ];
 
   return (
     <div className="font-sans">
+      {/* NAVBAR */}
+      <nav className="bg-white shadow sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-blue-600">Secural<span className="text-gray-800">ID</span></h1>
+          <ul className="hidden md:flex space-x-6 text-gray-700 font-medium">
+            <li className="hover:text-blue-600 cursor-pointer">Beranda</li>
+            <li className="hover:text-blue-600 cursor-pointer">Artikel</li>
+            <li className="hover:text-blue-600 cursor-pointer">Tentang Kami</li>
+            <li className="hover:text-blue-600 cursor-pointer">Hubungi Kami</li>
+          </ul>
+        </div>
+      </nav>
+
       {/* HERO */}
       <section className="bg-gradient-to-r from-blue-500 to-blue-300 min-h-[80vh] flex items-center justify-between px-10">
         <div className="max-w-lg text-white">
