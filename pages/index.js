@@ -32,20 +32,22 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="bg-gradient-to-r from-blue-500 to-blue-300 min-h-[80vh] flex items-center justify-between px-10">
-        <div className="max-w-lg text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Keamanan Digital Anda</h1>
-          <p className="text-lg mb-6">
-            Bersama Sebarkan Literasi Seputar Keamanan Digital.
-          </p>
-          <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100 transition">
-            Mulai Sekarang
-          </button>
-        </div>
-        <div className="hidden md:block">
-          <img src="/illustration.png" alt="ilustrasi" className="max-w-md rounded-xl shadow-lg" />
-        </div>
-      </section>
+      <section className="bg-gradient-to-r from-blue-500 to-blue-300 min-h-[80vh] flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-10">
+  <div className="text-white text-center md:text-left mt-6 md:mt-0">
+    <h1 className="text-3xl md:text-5xl font-bold mb-4">Keamanan Digital Anda</h1>
+    <p className="text-lg mb-6">
+      Bersama Sebarkan Literasi Seputar Keamanan Digital.
+    </p>
+    <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100 transition">
+      Mulai Sekarang
+    </button>
+  </div>
+
+  <div className="w-full md:w-auto flex justify-center">
+    <img src="/illustration.png" alt="ilustrasi" className="max-w-xs md:max-w-md rounded-xl shadow-lg" />
+  </div>
+</section>
+
 
       {/* ARTIKEL */}
       <section className="py-16 bg-white px-4 md:px-10">
