@@ -51,6 +51,7 @@ export default function Home() {
             className="text-2xl font-bold text-blue-600 cursor-pointer"
           >
             Secural<span className="text-gray-800">ID</span>
+             <span className="text-xs font-medium text-gray-400 ml-1 align-sub">community</span>
           </motion.h1>
 
           {/* Desktop Menu */}
@@ -110,7 +111,7 @@ export default function Home() {
               variants={heroItemVariants} 
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight" // Perbaikan 4: Ukuran font responsif
             >
-              Menjaga Jejak Digital Anda Tetap Aman
+              Platform edukasi untuk memahami pentingnya Keamanan Data
             </motion.h1>
             <motion.p 
               variants={heroItemVariants} 
