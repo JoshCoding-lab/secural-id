@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Lottie from "lottie-react"; // --- BARU: Import Lottie
+import shieldAnimation from "../public/shield-animation.json";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,13 +15,7 @@ export default function Home() {
       date: "23 Juli 2025",
       image: "/phishing.jpg",
     },
-    {
-      title: "Mengapa VPN Penting untuk Privasi Online Anda?",
-      desc: "VPN bukan hanya untuk mengakses konten terblokir. Pahami manfaat keamanannya.",
-      author: "Citra Lestari",
-      date: "22 Juli 2025",
-      image: "/vpn.jpg",
-    },
+  
     {
       title: "5 Langkah Membuat Password yang Kuat & Sulit Ditebak",
       desc: "Tinggalkan 'password123'. Ikuti panduan praktis untuk membuat kata sandi yang kokoh.",
@@ -130,20 +126,22 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full flex justify-center mt-8 md:mt-0" // Perbaikan 3: Spasi di mobile
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+            className="w-full flex justify-center mt-8 md:mt-0"
           >
-            <img 
-              src="/illustration.png" 
-              alt="Ilustrasi Keamanan Digital" 
-              className="w-full max-w-xs sm:max-w-sm md:max-w-md" // Perbaikan 5: Gambar responsif
+            {/* Mengganti <img> dengan komponen Lottie */}
+            <Lottie 
+              animationData={shieldAnimation} 
+              loop={true} 
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md"
             />
           </motion.div>
+          {/* --- AKHIR BAGIAN YANG DIUBAH --- */}
+
         </div>
       </section>
-
       {/* ARTIKEL */}
       <section className="py-16 sm:py-20 bg-gray-50"> {/* Perbaikan 2: Padding vertikal responsif */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
