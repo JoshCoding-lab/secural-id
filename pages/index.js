@@ -30,6 +30,14 @@ const SparklesIcon = () => (
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
+  // --- TAMBAHAN 1: Buat fungsi untuk handle scroll ---
+  const handleScrollDown = () => {
+    const nextSection = document.getElementById('features-section');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const anggota = [
     { nama: 'Joshua Barani', Jobdeks: 'Kordinator Projek', asal: 'Aki University', foto: '/anggota/joshua.jpg' },
     { nama: 'Yosia Agus Permana', Jobdeks: 'Frontend', asal: 'Aki University', foto: '/anggota/Yosia.jpg' },
@@ -162,8 +170,11 @@ export default function Home() {
             />
           </motion.div>
         </div>
+        
+        {/* --- TAMBAHAN 2: Tambahkan onClick dan cursor-pointer --- */}
         <motion.div
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-blue-200 flex flex-col items-center"
+          onClick={handleScrollDown}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-blue-200 flex flex-col items-center cursor-pointer"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
@@ -174,8 +185,8 @@ export default function Home() {
         </motion.div>
       </section>
       
-      {/* KENAPA HARUS SECURAL ID */}
-      <section className="py-24 sm:py-32 relative overflow-hidden">
+      {/* --- TAMBAHAN 3: Tambahkan ID pada section tujuan --- */}
+      <section id="features-section" className="py-24 sm:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_35px,rgba(255,255,255,0.08)_35px,rgba(255,255,255,0.08)_37px)]"></div>
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-12">
@@ -201,7 +212,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TIM PROFESIONAL KAMI - BAGIAN YANG DIUBAH */}
+      {/* TIM PROFESIONAL KAMI */}
       <section className="py-20 relative">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
