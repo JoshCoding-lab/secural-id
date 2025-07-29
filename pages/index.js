@@ -3,11 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Lottie from "lottie-react";
 import shieldAnimation from "../public/shield-animation.json";
 import AudioPlayer from '../components/AudioPlayer';
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles dan modules
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -36,12 +32,12 @@ export default function Home() {
 
   const anggota = [
     { nama: 'Joshua Barani', Jobdeks: 'Kordinator Projek', asal: 'Aki University', foto: '/anggota/joshua.jpg' },
-    { nama: 'Yosia Agus Permana', Jobdeks: 'Frontend', asal: 'Aki University', foto: '/anggota/anggota2.jpg' },
-    { nama: 'Hendrik Prayoga', Jobdeks: 'UI/UX', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
-    { nama: 'Muhamad Dimas Nurzaky', Jobdeks: 'UI/UX', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
-    { nama: 'Rifki Aditya Hariyanto', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
-    { nama: 'Arif Pramudia wardana', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
-    { nama: 'Irgi', Jobdeks: 'Bantu Kordinator', asal: 'Universitas Aki', foto: '/anggota/anggota3.jpg' },
+    { nama: 'Yosia Agus Permana', Jobdeks: 'Frontend', asal: 'Aki University', foto: '/anggota/Yosia.jpg' },
+    { nama: 'Hendrik Prayoga', Jobdeks: 'UI/UX', asal: 'Telkom University', foto: '/anggota/Hendrik.jpg' },
+    { nama: 'Muhamad Dimas Nurzaky', Jobdeks: 'UI/UX', asal: 'Telkom University', foto: '/anggota/Dimas.jpg' },
+    { nama: 'Rifki Aditya Hariyanto', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/Rifki.jpg' },
+    { nama: 'Arif Pramudia wardana', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/Arif.jpg' },
+    { nama: 'Irgi', Jobdeks: 'Bantu Kordinator', asal: 'Universitas Aki', foto: '/anggota/Irgi.jpg' },
   ];
   const containerVariants = {
     hidden: { opacity: 0 },
