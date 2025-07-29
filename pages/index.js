@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Lottie from "lottie-react";
 import shieldAnimation from "../public/shield-animation.json";
+import AudioPlayer from '../components/AudioPlayer';
 
 const CheckIcon = () => (
   <svg className="w-6 h-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -25,14 +26,14 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   const anggota = [
-  { nama: 'Joshua Barani', Jobdeks: 'Kordinator Projek', asal: 'Aki University', foto: '/anggota/joshua.jpg' },
-  { nama: 'Yosia Agus Permana', Jobdeks: 'Frontend', asal: 'Aki University', foto: '/anggota/anggota2.jpg' },
-  { nama: 'Hendrik Prayoga', Jobdeks: 'UI/UX', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
- { nama: 'Muhamad Dimas Nurzaky', Jobdeks: 'UI/UX', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
- { nama: 'Rifki Aditya Hariyanto', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
- { nama: 'Arif Pramudia wardana', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
- { nama: 'Irgi', Jobdeks: 'Bantu Kordinator', asal: 'Universitas Aki', foto: '/anggota/anggota3.jpg' },
-];
+    { nama: 'Joshua Barani', Jobdeks: 'Kordinator Projek', asal: 'Aki University', foto: '/anggota/joshua.jpg' },
+    { nama: 'Yosia Agus Permana', Jobdeks: 'Frontend', asal: 'Aki University', foto: '/anggota/anggota2.jpg' },
+    { nama: 'Hendrik Prayoga', Jobdeks: 'UI/UX', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
+    { nama: 'Muhamad Dimas Nurzaky', Jobdeks: 'UI/UX', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
+    { nama: 'Rifki Aditya Hariyanto', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
+    { nama: 'Arif Pramudia wardana', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/anggota3.jpg' },
+    { nama: 'Irgi', Jobdeks: 'Bantu Kordinator', asal: 'Universitas Aki', foto: '/anggota/anggota3.jpg' },
+  ];
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -45,7 +46,7 @@ export default function Home() {
 
   return (
     <div className="font-sans bg-gradient-to-br from-slate-700 via-indigo-800 to-black text-white overflow-x-hidden antialiased">
-
+<AudioPlayer />
       {/* NAVBAR */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
@@ -55,10 +56,10 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <motion.h1 whileHover={{ scale: 1.05 }} className="text-2xl font-extrabold text-blue-700 cursor-pointer tracking-tight"><svg className="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
 
 
             Secural<span className="text-gray-900">ID</span>
@@ -66,7 +67,7 @@ export default function Home() {
           </motion.h1>
 
           <ul className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
-            {['Beranda', 'Artikel', 'Tentang Kami', 'Hubungi Kami'].map((item) => (
+            {['Beranda', 'Artikel', 'Secural ID', 'Hubungi Kami'].map((item) => (
               <motion.li key={item} whileHover={{ y: -2, color: '#1D4ED8' }} className="cursor-pointer hover:text-blue-800 transition-colors duration-200">
                 {item}
               </motion.li>
@@ -89,7 +90,7 @@ export default function Home() {
               className="md:hidden px-6 pb-4 border-t border-gray-200/80"
             >
               <ul className="space-y-2 text-gray-600 font-medium mt-4">
-                {['Beranda', 'Artikel', 'Tentang Kami', 'Hubungi Kami'].map((item) => (
+                {['Beranda', 'Artikel', ' Secural ID', 'Hubungi Kami'].map((item) => (
                   <li key={item} className="hover:text-blue-800 cursor-pointer py-2 px-2 rounded-md hover:bg-blue-50 transition-all duration-200">
                     {item}
                   </li>
@@ -99,14 +100,14 @@ export default function Home() {
           )}
         </AnimatePresence>
       </motion.nav>
-      
+
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff66_1px,transparent_1px)] [background-size:20px_20px]" />
-        
+
         <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-blue-500/10 blur-3xl"></div>
         <div className="absolute bottom-10 left-10 w-60 h-60 rounded-full bg-indigo-500/10 blur-3xl"></div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
           <motion.div
             variants={containerVariants}
@@ -114,8 +115,8 @@ export default function Home() {
             animate="visible"
             className="space-y-6 text-center md:text-left"
           >
-            <motion.h1 
-              variants={itemVariants} 
+            <motion.h1
+              variants={itemVariants}
               className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-tight"
             >
               <span className="block">Aman & Sadar Digital</span>
@@ -123,19 +124,19 @@ export default function Home() {
                 Bersama Secural ID
               </span>
             </motion.h1>
-            
-            <motion.p 
-              variants={itemVariants} 
+
+            <motion.p
+              variants={itemVariants}
               className="text-blue-100 max-w-lg mx-auto md:mx-0 text-base md:text-lg"
             >
-              Edukasi mudah dipahami untuk melindungi data dan privasi Anda di era digital.
+            Platform Edukasi yang mudah dipahami untuk melindungi data dan privasi Anda di era digital.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
-              <motion.button 
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-blue-800 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:bg-blue-50 transition-all duration-300"
@@ -144,21 +145,21 @@ export default function Home() {
               </motion.button>
             </motion.div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "circOut", delay: 0.3 }}
             className="w-full flex justify-center"
           >
-            <Lottie 
-              animationData={shieldAnimation} 
-              loop={true} 
-              className="w-full max-w-md drop-shadow-2xl" 
+            <Lottie
+              animationData={shieldAnimation}
+              loop={true}
+              className="w-full max-w-md drop-shadow-2xl"
             />
           </motion.div>
         </div>
-         <motion.div 
+        <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-blue-200 flex flex-col items-center"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
@@ -169,13 +170,29 @@ export default function Home() {
           </svg>
         </motion.div>
       </section>
-      
 
-      {/* PERKENALAN KOMUNITAS */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <section className="py-20 relative">
+        {/* Garis-garis gradient di latar belakang */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full opacity-10">
+            {[...Array(15)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute h-px w-full"
+                style={{
+                  top: `${i * 7}%`,
+                  background: `linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent)`,
+                  transform: `rotate(${i % 2 === 0 ? 3 : -3}deg)`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -184,8 +201,8 @@ export default function Home() {
             >
               Tim <span className="text-blue-300">Profesional</span> Kami
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -195,41 +212,46 @@ export default function Home() {
               Tim ahli yang berdedikasi untuk memberikan solusi keamanan digital terbaik bagi Anda
             </motion.p>
           </div>
-    <motion.div 
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-    >
-      {anggota.map((orang, index) => (
-        <motion.div
-          key={index}
-          variants={itemVariants}
-          className="bg-white/10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-105"
-        >
-          <div className="h-80 overflow-hidden">
-  <img 
-    src={orang.foto} 
-    alt={orang.nama} 
-    className="w-full h-full object-cover rounded-t-2xl" 
-  />
-</div>
-<div className="p-6 bg-white/10 text-center">
-  <h3 className="text-lg font-semibold text-white">{orang.nama}</h3>
-  <p className="text-blue-300 font-medium mt-1">{orang.Jobdeks}</p>
-  <p className="text-sm text-blue-200 italic mt-2">{orang.asal}</p>
-</div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {anggota.map((orang, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="bg-white/10 backdrop-blur-sm rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:scale-105"
+              >
+                <div className="h-80 overflow-hidden">
+                  <img
+                    src={orang.foto}
+                    alt={orang.nama}
+                    className="w-full h-full object-cover rounded-t-2xl"
+                  />
+                </div>
+                <div className="p-6 bg-white/10 text-center">
+                  <h3 className="text-lg font-semibold text-white">{orang.nama}</h3>
+                  <p className="text-blue-300 font-medium mt-1">{orang.Jobdeks}</p>
+                  <p className="text-sm text-blue-200 italic mt-2">{orang.asal}</p>
+                </div>
 
-        </motion.div>
-      ))}
-    </motion.div>
-  </div>
-</section>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
       {/* KENAPA HARUS SECURAL ID */}
-      <section className="py-24 sm:py-32">
-        <div className="max-w-5xl mx-auto px-6 text-center">
+      {/* <-- UBAH INI: Tambahkan 'relative' dan 'overflow-hidden' --> */}
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        {/* <-- TAMBAHKAN INI: Div untuk latar belakang pola garis --> */}
+       <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_35px,rgba(255,255,255,0.08)_35px,rgba(255,255,255,0.08)_37px)]"></div>
+        
+        {/* <-- UBAH INI: Tambahkan 'relative' dan 'z-10' agar konten berada di atas background --> */}
+        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-12">
             Kenapa Harus <span className="text-blue-300">Secural ID</span>?
           </h2>
@@ -240,7 +262,7 @@ export default function Home() {
               <h4 className="text-xl font-semibold text-white mt-4 mb-2">Ringkas & Mudah Dipahami</h4>
               <p className="text-blue-100">Membantu masyarakat melindungi data pribadi agar tidak jadi korban kejahatan digital.</p>
             </div>
-           <div className="group bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transform transition-all duration-300 border border-blue-300/20">
+            <div className="group bg-white/10 backdrop-blur-sm p-8 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-2 transform transition-all duration-300 border border-blue-300/20">
 
               <CheckIcon />
               <h4 className="text-xl font-semibold text-white mt-4 mb-2">Profesional & Relevan</h4>
@@ -265,17 +287,17 @@ export default function Home() {
         className="text-white"
       >
         <div className="max-w-6xl mx-auto py-16 px-4 text-center">
-         <h3 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-2">
-  <span className="flex items-center gap-2">
-    Secural
-    <svg className="w-6 h-6 text-blue-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-    <span className="text-blue-300">ID</span>
-  </span>
-</h3>
+          <h3 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-2">
+            <span className="flex items-center gap-2">
+              Secural
+              <svg className="w-6 h-6 text-blue-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="text-blue-300">ID</span>
+            </span>
+          </h3>
 
           <p className="text-blue-200 max-w-md mx-auto mb-8 text-sm sm:text-base">
             Mendedukasi dan memberdayakan masyarakat untuk navigasi yang lebih aman di dunia digital.
