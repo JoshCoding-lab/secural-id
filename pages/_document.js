@@ -4,7 +4,7 @@ export default function Document() {
   return (
     <Html lang="id">
       <Head>
-        {/* Tambahkan atau pastikan baris ini ada */}
+       
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
         {/* Ini adalah link font dari sebelumnya, biarkan saja */}
