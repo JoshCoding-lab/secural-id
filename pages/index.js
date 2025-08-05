@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import AudioPlayer from '../components/AudioPlayer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -10,8 +8,11 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Lottie from "lottie-react";
 import talkingAnimation from "../src/animations/Talking Character.json";
+import NaratorPlayer from '../components/NaratorPlayer';
+import BacksoundPlayer from '../components/BacksoundPlayer';
 
-// --- Komponen Ikon (Tidak ada perubahan) ---
+
+
 const CheckIcon = () => (
   <svg className="w-6 h-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -63,13 +64,10 @@ export default function Home() {
   return (
     <div className="font-sans bg-gradient-to-br from-slate-700 via-indigo-800 to-black text-white overflow-x-hidden antialiased">
       <Navbar />
+      <NaratorPlayer />
+      <BacksoundPlayer />
       
-      {/* 1. MUSIK OTOMATIS BERPUTAR */}
-      {/* Kita perlu mengasumsikan komponen AudioPlayer menerima prop 'autoPlay' */}
-      {/* Jika komponen Anda dibuat sendiri, pastikan ia menangani prop ini */}
-      <AudioPlayer autoPlay={true} />
-      
-      {/* ... KONTEN HALAMAN SEPERTI BIASA ... */}
+      {/* ... KONTEN HALAMAN ... */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff66_1px,transparent_1px)] [background-size:20px_20px]" />
         <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-blue-500/10 blur-3xl"></div>
@@ -213,11 +211,11 @@ export default function Home() {
         </div>
       </section>
       
-      {/* 2. MASKOT ANIMASI DENGAN KEMUNCULAN TERTUNDA */}
+      {/* ANimasi oragng bicara */}
       <motion.div 
         className="fixed bottom-4 left-4 z-50 w-52 pointer-events-none"
-        initial={{ opacity: 0, y: 50 }} // Posisi awal: transparan dan sedikit di bawah
-        animate={{ opacity: 1, y: 0 }} // Posisi akhir: terlihat dan di posisi normal
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }} 
         transition={{ 
           delay: 1, 
           duration: 0.8, // Durasi animasi
