@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Lottie from "lottie-react";
-import shieldAnimation from "../src/animations/shield-animation.json";
+import { motion } from 'framer-motion';
 import AudioPlayer from '../components/AudioPlayer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -10,7 +8,10 @@ import 'swiper/css/pagination';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Lottie from "lottie-react";
+import talkingAnimation from "../src/animations/Talking Character.json";
 
+// --- Komponen Ikon (Tidak ada perubahan) ---
 const CheckIcon = () => (
   <svg className="w-6 h-6 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -28,11 +29,10 @@ const SparklesIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m-6.364-2.364l.707.707M16.071 4.929l.707.707m-12.728 0l-.707.707M17.486 16.778l-.707.707" />
   </svg>
 );
- 
-export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
 
-  // --- TAMBAHAN 1: Buat fungsi untuk handle scroll ---
+
+export default function Home() {
+
   const handleScrollDown = () => {
     const nextSection = document.getElementById('features-section');
     if (nextSection) {
@@ -49,6 +49,7 @@ export default function Home() {
     { nama: 'Arif Pramudia wardana', Jobdeks: 'Backend', asal: 'Telkom University', foto: '/anggota/Arif.jpg' },
     { nama: 'Irgi', Jobdeks: 'Bantu Kordinator', asal: 'Universitas Aki', foto: '/anggota/Irgi.jpg' },
   ];
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
@@ -61,76 +62,40 @@ export default function Home() {
 
   return (
     <div className="font-sans bg-gradient-to-br from-slate-700 via-indigo-800 to-black text-white overflow-x-hidden antialiased">
-     <Navbar />
-      <AudioPlayer />
-     
-
-      {/* HERO SECTION */}
+      <Navbar />
+      
+      {/* 1. MUSIK OTOMATIS BERPUTAR */}
+      {/* Kita perlu mengasumsikan komponen AudioPlayer menerima prop 'autoPlay' */}
+      {/* Jika komponen Anda dibuat sendiri, pastikan ia menangani prop ini */}
+      <AudioPlayer autoPlay={true} />
+      
+      {/* ... KONTEN HALAMAN SEPERTI BIASA ... */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff66_1px,transparent_1px)] [background-size:20px_20px]" />
-
         <div className="absolute top-20 right-20 w-40 h-40 rounded-full bg-blue-500/10 blur-3xl"></div>
         <div className="absolute bottom-10 left-10 w-60 h-60 rounded-full bg-indigo-500/10 blur-3xl"></div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="space-y-6 text-center md:text-left"
-          >
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-tight"
-            >
+        <div className="relative z-10 max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
+          <motion.div variants={containerVariants} initial="hidden" animate="visible" className="flex-1 space-y-6">
+            <motion.h1 variants={itemVariants} className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-tight">
               <span className="block">Aman & Sadar Digital</span>
               <span className="block mt-3 bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
                 Bersama Secural ID
               </span>
             </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-blue-100 max-w-lg mx-auto md:mx-0 text-base md:text-lg"
-            >
+            <motion.p variants={itemVariants} className="text-blue-100 max-w-lg mx-auto md:mx-0 text-base md:text-lg">
               Platform Edukasi yang mudah dipahami untuk melindungi data dan privasi Anda di era digital.
             </motion.p>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-blue-800 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:bg-blue-50 transition-all duration-300"
-              >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}>
+              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-white text-blue-800 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:bg-blue-50 transition-all duration-300">
                 Mulai Sekarang
               </motion.button>
             </motion.div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "circOut", delay: 0.3 }}
-            className="w-full flex justify-center"
-          >
-            <Lottie
-              animationData={shieldAnimation}
-              loop={true}
-              className="w-full max-w-md drop-shadow-2xl"
-            />
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: "circOut", delay: 0.3 }} className="flex-1">
+            <img src="/gambar-baru.png" alt="Secural ID Hero Image" className="w-full max-w-md drop-shadow-2xl rounded-lg mx-auto"/>
           </motion.div>
         </div>
-        
-        {/* --- TAMBAHAN 2: Tambahkan onClick dan cursor-pointer --- */}
-        <motion.div
-          onClick={handleScrollDown}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-blue-200 flex flex-col items-center cursor-pointer"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-        >
+        <motion.div onClick={handleScrollDown} className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-blue-200 flex flex-col items-center cursor-pointer" animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
           <span className="text-sm mb-2">Scroll untuk lanjut</span>
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -138,7 +103,6 @@ export default function Home() {
         </motion.div>
       </section>
       
-      {/* --- TAMBAHAN 3: Tambahkan ID pada section tujuan --- */}
       <section id="features-section" className="py-24 sm:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-[repeating-linear-gradient(45deg,transparent,transparent_35px,rgba(255,255,255,0.08)_35px,rgba(255,255,255,0.08)_37px)]"></div>
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
@@ -165,7 +129,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TIM PROFESIONAL KAMI */}
       <section className="py-20 relative">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
@@ -182,7 +145,6 @@ export default function Home() {
             ))}
           </div>
         </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <motion.h2
@@ -194,7 +156,6 @@ export default function Home() {
             >
               Tim <span className="text-blue-300">Profesional</span> Kami
             </motion.h2>
-
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +166,6 @@ export default function Home() {
               Tim ahli yang berdedikasi untuk memberikan solusi keamanan digital terbaik bagi Anda
             </motion.p>
           </div>
-
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -221,9 +181,7 @@ export default function Home() {
                 delay: 3000,
                 disableOnInteraction: false,
               }}
-              pagination={{
-                clickable: true,
-              }}
+              pagination={{ clickable: true }}
               navigation={true}
               breakpoints={{
                 640: { slidesPerView: 1, spaceBetween: 20 },
@@ -254,7 +212,25 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-        <Footer />
+      
+      {/* 2. MASKOT ANIMASI DENGAN KEMUNCULAN TERTUNDA */}
+      <motion.div 
+        className="fixed bottom-4 left-4 z-50 w-52 pointer-events-none"
+        initial={{ opacity: 0, y: 50 }} // Posisi awal: transparan dan sedikit di bawah
+        animate={{ opacity: 1, y: 0 }} // Posisi akhir: terlihat dan di posisi normal
+        transition={{ 
+          delay: 1, 
+          duration: 0.8, // Durasi animasi
+          ease: "easeOut" 
+        }}
+      >
+        <Lottie 
+            animationData={talkingAnimation} 
+            loop={true} 
+        />
+      </motion.div>
+
+      <Footer />
     </div>
   );
 }

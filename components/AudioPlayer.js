@@ -1,10 +1,10 @@
 // components/AudioPlayer.js
 
-"use client"; // <-- WAJIB DITAMBAHKAN!
+"use client"; 
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-// Ikon untuk tombol
+// Ikon untuk tombol (Tidak ada perubahan)
 const PlayIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
     <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.647c1.295.742 1.295 2.545 0 3.286L7.279 20.99c-1.25.72-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
@@ -18,15 +18,61 @@ const PauseIcon = () => (
 );
 
 
-export default function AudioPlayer() {
+export default function AudioPlayer({ autoPlay = false }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef(null);
+  // State untuk melacak apakah pengguna sudah berinteraksi
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  // Fungsi untuk mencoba memutar audio
+  const tryPlay = () => {
+    const audio = audioRef.current;
+    if (audio && !isPlaying) { // Hanya coba putar jika belum berputar
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlaying(true))
+          .catch(error => console.log("Autoplay failed, waiting for user interaction."));
+      }
+    }
+  };
+
+  // Efek untuk mendeteksi interaksi pertama pengguna
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      setHasInteracted(true);
+      // Hapus listener setelah interaksi pertama agar tidak berjalan terus-menerus
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction);
+    };
+
+    // Tambahkan listener untuk berbagai jenis interaksi
+    window.addEventListener('click', handleFirstInteraction);
+    window.addEventListener('keydown', handleFirstInteraction);
+    window.addEventListener('scroll', handleFirstInteraction);
+
+    // Cleanup function untuk menghapus listener jika komponen di-unmount
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
+      window.removeEventListener('scroll', handleFirstInteraction);
+    };
+  }, []); // Array kosong berarti efek ini hanya berjalan sekali saat komponen dimuat
+
+  // Efek untuk memutar audio jika autoplay diaktifkan dan pengguna sudah berinteraksi
+  useEffect(() => {
+    if (autoPlay && hasInteracted) {
+      tryPlay();
+    }
+  }, [autoPlay, hasInteracted]); // Jalankan efek ini jika autoPlay atau hasInteracted berubah
 
   const togglePlayPause = () => {
+    const audio = audioRef.current;
     if (isPlaying) {
-      audioRef.current.pause();
+      audio.pause();
     } else {
-      audioRef.current.play();
+      audio.play();
     }
     setIsPlaying(!isPlaying);
   };
