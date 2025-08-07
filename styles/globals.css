@@ -1,7 +1,9 @@
 @import "tailwindcss";
 @import '@fortawesome/fontawesome-free/css/all.min.css';
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Sora:wght@700;800&display=swap');
 :root {
+  
+  
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -49,4 +51,36 @@ body {
 .swiper-pagination-bullet-active {
   background: #ffffff !important;
   opacity: 1 !important;
+}
+/* dalam globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Kelas untuk text outline */
+  .text-stroke-1 { -webkit-text-stroke-width: 1px; }
+  .text-stroke-2 { -webkit-text-stroke-width: 2px; }
+  .text-stroke-white { -webkit-text-stroke-color: white; }
+  .text-stroke-black { -webkit-text-stroke-color: black; }
+}
+
+@keyframes gradient-xy {
+  0%, 100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes moveBg {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }

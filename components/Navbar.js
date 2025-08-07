@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // <-- Langkah 2
+  const [isOpen, setIsOpen] = useState(false); 
 
   return (
       <motion.nav
@@ -26,7 +26,7 @@ export default function Navbar() {
            {[
   { label: 'Beranda', href: '/' },
   { label: 'Artikel', href: '/artikel' },
-  { label: 'Secural ID', href: '/tentang' },
+  { label: 'Secural ID', href: '/Secural' },
   { label: 'Hubungi Kami', href: '/hubungi' },
 ].map(({ label, href }) => (
   <motion.li
