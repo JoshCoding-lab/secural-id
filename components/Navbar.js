@@ -25,7 +25,7 @@ export default function Navbar() {
           <ul className="hidden md:flex space-x-8 text-gray-600 font-medium text-sm">
            {[
   { label: 'Beranda', href: '/' },
-  { label: 'Artikel', href: '/artikel' },
+  { label: 'Artikel/Berita', href: '/artikel' },
   { label: 'Secural ID', href: '/Secural' },
   { label: 'Hubungi Kami', href: '/hubungi' },
 ].map(({ label, href }) => (
